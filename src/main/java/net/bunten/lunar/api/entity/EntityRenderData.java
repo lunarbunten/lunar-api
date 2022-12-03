@@ -10,21 +10,18 @@ import net.minecraft.client.model.geom.ModelPart;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.entity.EntityRendererProvider.Context;
 import net.minecraft.core.Registry;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 
 @Environment(EnvType.CLIENT)
 public class EntityRenderData<T extends Entity> {
 
-    private final String namespace;
     private final EntityType<T> type;
     private final EntityRendererProvider<T> renderer;
     private final TexturedModelDataProvider dataProvider;
     private final ModelLayerLocation modelLayerLocation;
 
-    public EntityRenderData(String namespace, EntityType<T> type, EntityRendererProvider<T> renderer, TexturedModelDataProvider dataProvider) {
-        this.namespace = namespace;
+    public EntityRenderData(EntityType<T> type, EntityRendererProvider<T> renderer, TexturedModelDataProvider dataProvider) {
         this.type = type;
         this.renderer = renderer;
         this.dataProvider = dataProvider;
@@ -39,12 +36,11 @@ public class EntityRenderData<T extends Entity> {
     }
 
     private ModelLayerLocation registerModelLayer(EntityType<?> type) {
-        String path = Registry.ENTITY_TYPE.getKey(type).getPath();
-        return new ModelLayerLocation(new ResourceLocation(namespace, path), path);
+        return new ModelLayerLocation(Registry.ENTITY_TYPE.getKey(type), Registry.ENTITY_TYPE.getKey(type).getPath());
     }
 
-    public static <T extends Entity> EntityRenderData<T> create(String namespace, EntityType<T> type, EntityRendererProvider<T> renderer, TexturedModelDataProvider dataProvider) {
-        return new EntityRenderData<T>(namespace, type, renderer, dataProvider);
+    public static <T extends Entity> EntityRenderData<T> create(EntityType<T> type, EntityRendererProvider<T> renderer, TexturedModelDataProvider dataProvider) {
+        return new EntityRenderData<T>(type, renderer, dataProvider);
     }
 
     public EntityType<T> getEntityType() {

@@ -32,7 +32,6 @@ dependencies {
 
 	modRuntimeOnly "maven.modrinth:lazydfu:${project.lazydfu_version}"
 	modRuntimeOnly "maven.modrinth:fastload:${project.fastload_version}"
-	modRuntimeOnly "maven.modrinth:modmenu:${project.modmenu_version}"
 }
 
 processResources {

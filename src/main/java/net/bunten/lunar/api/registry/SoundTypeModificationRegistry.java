@@ -1,4 +1,4 @@
-package net.bunten.lunar.impl.registry;
+package net.bunten.lunar.api.registry;
 
 import java.util.IdentityHashMap;
 import java.util.Map;
