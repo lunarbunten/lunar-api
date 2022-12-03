@@ -1,0 +1,17 @@
+{
+	"required": true,
+	"package": "net.bunten.lunar.impl.mixin",
+	"compatabilityLevel": "JAVA_17",
+	"mixins": [
+		"ModifyBlockSounds"
+	],
+	"client": [
+		"client.AddHudElements",
+		"client.AddTickableSoundInstances",
+		"client.AddViewShaders"
+	],
+	"server": [],
+	"injectors": {
+		"defaultRequire": 1
+	}
+}
