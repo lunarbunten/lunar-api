@@ -11,8 +11,10 @@ version = project.mod_version
 group = project.maven_group
 
 repositories {
-	maven {
-		url 'https://jitpack.io'
+	jcenter()
+	maven { 
+		name = "Jitpack"
+		url 'https://jitpack.io/'
 	}
 	maven {
         name = "Modrinth"
