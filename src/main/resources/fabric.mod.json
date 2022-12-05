@@ -10,11 +10,6 @@
     "license": "MIT",
     "icon": "assets/lunar-api/icon.png",
     "environment": "*",
-    "entrypoints": {
-        "client": [
-            "net.bunten.lunar.impl.LunarClientEntry"
-        ]
-    },
     "mixins": [
         "lunar.mixins.json"
     ],
