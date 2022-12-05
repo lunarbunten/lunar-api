@@ -1,8 +1,7 @@
-package net.bunten.lunar.api.registry;
+package net.bunten.lunar.impl;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 import net.bunten.lunar.api.loot.LootInjection;
 import net.fabricmc.fabric.api.loot.v2.LootTableEvents;
@@ -11,14 +10,9 @@ import net.minecraft.world.level.storage.loot.LootPool;
 import net.minecraft.world.level.storage.loot.LootTable;
 import net.minecraft.world.level.storage.loot.entries.LootTableReference;
 
-public class LootInjectionRegistry {
+public class LootInjectionImpl {
     
     public static final List<LootInjection> INJECTIONS = new ArrayList<>();
-
-    public static void register(LootInjection injection) {
-        Objects.requireNonNull(injection);
-        INJECTIONS.add(injection);
-	}
 
     private static void addInjection(LootTable.Builder builder, ResourceLocation location) {
         builder.pool(LootPool.lootPool().add(LootTableReference.lootTableReference(location).setWeight(1).setQuality(0)).build());

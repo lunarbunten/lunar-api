@@ -1,14 +1,15 @@
 package net.bunten.lunar.api.block;
 
-import java.util.function.Predicate;
-
 import net.minecraft.world.level.block.SoundType;
+import net.minecraft.world.level.block.state.BlockState;
+
+import java.util.function.Predicate;
 
 public class SoundTypeModification {
     private final SoundType soundType;
-    private final Predicate<SoundType> predicate;
+    private final Predicate<BlockState> predicate;
 
-    public SoundTypeModification(SoundType soundType, Predicate<SoundType> predicate) {
+    public SoundTypeModification(SoundType soundType, Predicate<BlockState> predicate) {
         this.soundType = soundType;
         this.predicate = predicate;
     }
@@ -17,7 +18,7 @@ public class SoundTypeModification {
         return soundType;
     }
 
-    public boolean applies() {
-        return predicate.test(soundType);
+    public boolean applies(BlockState block) {
+        return predicate.test(block);
     }
 }

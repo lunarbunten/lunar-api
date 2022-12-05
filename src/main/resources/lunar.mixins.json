@@ -8,7 +8,8 @@
 	"client": [
 		"client.AddHudElements",
 		"client.AddTickableSoundInstances",
-		"client.AddViewShaders"
+		"client.AddViewShaders",
+		"client.ItemBlockRenderTypesMixin"
 	],
 	"server": [],
 	"injectors": {

@@ -11,7 +11,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import com.mojang.blaze3d.vertex.PoseStack;
 
 import net.bunten.lunar.api.hud.RenderPhase;
-import net.bunten.lunar.api.registry.HudElementRegistry;
+import net.bunten.lunar.impl.HudElementImpl;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.client.Minecraft;
@@ -38,7 +38,7 @@ public abstract class AddHudElements {
     )
     
     public void render(float f, long l, boolean bl, CallbackInfo info) {
-        HudElementRegistry.ELEMENTS.stream().filter((element) -> element.phase == RenderPhase.BEFORE_HUD).forEach((element) -> {
+        HudElementImpl.ELEMENTS.stream().filter((element) -> element.phase == RenderPhase.BEFORE_HUD).forEach((element) -> {
             element.render(new PoseStack(), minecraft.getDeltaFrameTime());
         });
     }
