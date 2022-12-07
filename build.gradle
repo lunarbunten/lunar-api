@@ -31,7 +31,6 @@ dependencies {
 	modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
 
 	modRuntimeOnly "maven.modrinth:lazydfu:${project.lazydfu_version}"
-	modRuntimeOnly "maven.modrinth:fastload:${project.fastload_version}"
 }
 
 processResources {

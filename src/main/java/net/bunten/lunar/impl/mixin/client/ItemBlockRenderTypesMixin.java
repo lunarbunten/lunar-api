@@ -12,7 +12,7 @@ import net.fabricmc.api.Environment;
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
 import net.fabricmc.fabric.api.client.rendering.v1.ColorProviderRegistry;
 import net.minecraft.client.renderer.ItemBlockRenderTypes;
-import net.minecraft.core.Registry;
+import net.minecraft.core.registries.BuiltInRegistries;
 
 @Environment(EnvType.CLIENT)
 @Mixin(ItemBlockRenderTypes.class)
@@ -20,7 +20,7 @@ public class ItemBlockRenderTypesMixin {
 
 	@Inject(method = "<clinit>*", at = @At("HEAD"))
 	private static void onInitialize(CallbackInfo info) {
-        Registry.BLOCK.stream().filter(block -> block instanceof HasRenderType).forEach(block -> BlockRenderLayerMap.INSTANCE.putBlock(block, HasRenderType.class.cast(block).getRenderType()));
-        Registry.BLOCK.stream().filter(block -> block instanceof HasColorProvider).forEach(block -> ColorProviderRegistry.BLOCK.register(HasColorProvider.class.cast(block).getColorProvider(), block));
+        BuiltInRegistries.BLOCK.stream().filter(block -> block instanceof HasRenderType).forEach(block -> BlockRenderLayerMap.INSTANCE.putBlock(block, HasRenderType.class.cast(block).getRenderType()));
+        BuiltInRegistries.BLOCK.stream().filter(block -> block instanceof HasColorProvider).forEach(block -> ColorProviderRegistry.BLOCK.register(HasColorProvider.class.cast(block).getColorProvider(), block));
 	}
 }

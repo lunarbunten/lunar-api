@@ -9,7 +9,7 @@ import net.minecraft.client.model.geom.ModelLayerLocation;
 import net.minecraft.client.model.geom.ModelPart;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.entity.EntityRendererProvider.Context;
-import net.minecraft.core.Registry;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 
@@ -36,7 +36,7 @@ public class EntityRenderData<T extends Entity> {
     }
 
     private ModelLayerLocation registerModelLayer(EntityType<?> type) {
-        return new ModelLayerLocation(Registry.ENTITY_TYPE.getKey(type), Registry.ENTITY_TYPE.getKey(type).getPath());
+        return new ModelLayerLocation(BuiltInRegistries.ENTITY_TYPE.getKey(type), BuiltInRegistries.ENTITY_TYPE.getKey(type).getPath());
     }
 
     public static <T extends Entity> EntityRenderData<T> create(EntityType<T> type, EntityRendererProvider<T> renderer, TexturedModelDataProvider dataProvider) {
